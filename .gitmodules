@@ -7,3 +7,6 @@
 [submodule "lib/FreeRTOS-Kernel"]
 	path = lib/FreeRTOS-Kernel
 	url = git@github.com:raspberrypi/FreeRTOS-Kernel.git
+[submodule "lib/c-iot-drivers"]
+	path = lib/c-iot-drivers
+	url = git@github.com:Regeneric/c-iot-drivers.git

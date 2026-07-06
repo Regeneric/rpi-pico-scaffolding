@@ -2,7 +2,7 @@
 #include <defines.h>
 
 #ifdef HPLATFORM_ARM
-    #define HLOG_LEVEL                          LOG_DEBUG                       // TRACE | DEBUG | INFO | WARN | ERROR
+    #define HLOG_LEVEL                          LOG_TRACE                       // TRACE | DEBUG | INFO | WARN | ERROR
 
     #define HTASK_PRIORITY_LOW                  1                               // For RTOS tasks
     #define HTASK_PRIORITY_MEDIUM               2                               // For RTOS tasks

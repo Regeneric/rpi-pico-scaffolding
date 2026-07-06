@@ -1,16 +1,16 @@
-# add_subdirectory(some)
+add_subdirectory(core)
 # add_subdirectory(other)
 # add_subdirectory(directory)
 # add_subdirectory(to)
 # add_subdirectory(include)
 
 add_executable(${PROJECT_NAME}
-    main.c
-    # some.c
-    # other.c
-    # file.c
-    # to.c
-    # include.c
+    main.cpp
+    # some.cpp
+    # other.cpp
+    # file.cpp
+    # to.cpp
+    # include.cpp
 )
 
 target_include_directories(${PROJECT_NAME} 
@@ -29,6 +29,10 @@ target_link_libraries(${PROJECT_NAME}
         segger_sysview
         segger_sysview_freertos
         segger_rtt
+
+        # ---- HKK IoT Drivers
+        hkk::bus_i2c_rp2350
+        # hkk::bus_spi_rp2350
 
         # ---- Pico SDK core ----
         pico_stdlib
@@ -135,4 +139,10 @@ target_compile_options(${PROJECT_NAME}
         $<$<CONFIG:Debug>:-O0>
         $<$<CONFIG:Debug>:-g3>
         $<$<CONFIG:Release>:-Os>
+
+        # Minimal C++ feature set
+        $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
+        $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
+        $<$<COMPILE_LANGUAGE:CXX>:-fno-threadsafe-statics>
+        $<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
 )

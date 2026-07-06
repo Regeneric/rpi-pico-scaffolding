@@ -104,9 +104,9 @@ add_compile_options(
     -Wno-format                   # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
 )
 
-# if you have anything in "lib" folder then uncomment the line below - remember to add a CMakeLists.txt
-# file to the "lib" directory
+# External libraries
 add_subdirectory(lib/SEGGER)
+add_subdirectory(lib/c-iot-drivers)
 
 # Add subdirectories
 add_subdirectory(src)

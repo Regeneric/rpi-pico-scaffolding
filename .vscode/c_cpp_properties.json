@@ -8,8 +8,7 @@
       "cStandard": "c17",
       "cppStandard": "c++17",
       "includePath": [
-        "${workspaceFolder}/include",
-        "${workspaceFolder}/include/config",
+        "${workspaceFolder}/include/**",
         "${workspaceFolder}/lib/pico-sdk/**",
         "${workspaceFolder}/lib/pico-extras/**",
         "${workspaceFolder}/lib/SEGGER",
@@ -25,8 +24,7 @@
       "cStandard": "c17",
       "cppStandard": "c++17",
       "includePath": [
-        "${workspaceFolder}/include",
-        "${workspaceFolder}/include/config",
+        "${workspaceFolder}/include/**",
         "${workspaceFolder}/lib/pico-sdk/**",
         "${workspaceFolder}/lib/pico-extras/**",
         "${workspaceFolder}/lib/SEGGER",
