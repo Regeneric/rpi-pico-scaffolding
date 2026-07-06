@@ -1,0 +1,9 @@
+board/
+build/
+
+debug/*.jdebug
+debug/*.jdebug.user
+
+docs/
+
+pico_sdk_import.cmake

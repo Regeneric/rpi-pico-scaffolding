@@ -1,0 +1,81 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(ARM) RP2350 - GDB",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/arm/debug/src/hkRTOS.elf",
+      "miDebuggerPath": "arm-none-eabi-gdb",
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "setupCommands": [
+        {
+          "description": "Connect to OpenOCD",
+          "text": "target extended-remote localhost:3333",
+          "ignoreFailures": false
+        },
+        {
+          "description": "Reset and halt target",
+          "text": "monitor reset halt",
+          "ignoreFailures": false
+        },
+        {
+          "description": "Enable pretty-printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "logging": {
+        "engineLogging": false
+      },
+      "preLaunchTask": "(ARM) [DEBUG] Build"
+    },
+    {
+      "name": "(RISC-V) Hazard3 - GDB",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/riscv/debug/src/hkRTOS.elf",
+      "miDebuggerPath": "riscv32-unknown-elf-gdb",
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "setupCommands": [
+        {
+          "description": "Connect to OpenOCD",
+          "text": "target extended-remote localhost:3333",
+          "ignoreFailures": false
+        },
+        {
+          "description": "Reset and halt target",
+          "text": "monitor reset halt",
+          "ignoreFailures": false
+        },
+        {
+          "description": "Enable pretty-printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "logging": {
+        "engineLogging": false
+      },
+      "preLaunchTask": "(RISC-V) [DEBUG] Build"
+    },
+    {
+      "name": "(ARM) RP2350 - Cortex-Debug external OpenOCD",
+      "type": "cortex-debug",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceFolder}/build/arm/debug/src/hkRTOS.elf",
+      "servertype": "external",
+      "gdbPath": "arm-none-eabi-gdb",
+      "gdbTarget": "127.0.0.1:3333",
+      "device": "RP2350",
+      "svdFile": "${workspaceFolder}/debug/RP2350.svd",
+      "showDevDebugOutput": "parsed",
+      "preLaunchTask": "(ARM) [DEBUG] Build"
+    }
+  ]
+}

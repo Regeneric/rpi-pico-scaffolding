@@ -1,0 +1,92 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 17,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "arm-debug",
+      "displayName": "ARM Debug - RP2350",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/arm/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "BUILD_FOR_ARM": "ON",
+        "BUILD_FOR_RISCV": "OFF",
+        "PICO_BOARD": "pico2_w",
+        "PICO_PLATFORM": "rp2350-arm-s",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "PICOTOOL_FORCE_FETCH_FROM_GIT": "ON"
+      }
+    },
+    {
+      "name": "arm-release",
+      "displayName": "ARM Release - RP2350",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/arm/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_FOR_ARM": "ON",
+        "BUILD_FOR_RISCV": "OFF",
+        "PICO_BOARD": "pico2_w",
+        "PICO_PLATFORM": "rp2350-arm-s",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "PICOTOOL_FORCE_FETCH_FROM_GIT": "ON"
+      }
+    },
+    {
+      "name": "riscv-debug",
+      "displayName": "RISC-V Debug - RP2350",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/riscv/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "BUILD_FOR_ARM": "OFF",
+        "BUILD_FOR_RISCV": "ON",
+        "PICO_BOARD": "pico2_w",
+        "PICO_PLATFORM": "rp2350-riscv",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "PICOTOOL_FORCE_FETCH_FROM_GIT": "ON"
+      }
+    },
+    {
+      "name": "riscv-release",
+      "displayName": "RISC-V Release - RP2350",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/riscv/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_FOR_ARM": "OFF",
+        "BUILD_FOR_RISCV": "ON",
+        "PICO_BOARD": "pico2_w",
+        "PICO_PLATFORM": "rp2350-riscv",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "PICOTOOL_FORCE_FETCH_FROM_GIT": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "arm-debug",
+      "displayName": "Build ARM Debug",
+      "configurePreset": "arm-debug"
+    },
+    {
+      "name": "arm-release",
+      "displayName": "Build ARM Release",
+      "configurePreset": "arm-release"
+    },
+    {
+      "name": "riscv-debug",
+      "displayName": "Build RISC-V Debug",
+      "configurePreset": "riscv-debug"
+    },
+    {
+      "name": "riscv-release",
+      "displayName": "Build RISC-V Release",
+      "configurePreset": "riscv-release"
+    }
+  ]
+}

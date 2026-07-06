@@ -1,0 +1,39 @@
+{
+  "configurations": [
+    {
+      "name": "(ARM) RP2040/RP2350 - DEBUG",
+      "compileCommands": "${workspaceFolder}/build/arm/debug/compile_commands.json",
+      "intelliSenseMode": "gcc-arm",
+      "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "includePath": [
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/include/config",
+        "${workspaceFolder}/lib/pico-sdk/**",
+        "${workspaceFolder}/lib/pico-extras/**",
+        "${workspaceFolder}/lib/SEGGER",
+        "${workspaceFolder}/lib/SEGGER/Config",
+        "${workspaceFolder}/lib/SEGGER/FreeRTOSV11"
+      ]
+    },
+    {
+      "name": "(RISC-V) Hazard3 - DEBUG",
+      "compileCommands": "${workspaceFolder}/build/riscv/debug/compile_commands.json",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/opt/riscv/gcc14-rp2350-no-zcmp/bin/riscv32-unknown-elf-gcc",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "includePath": [
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/include/config",
+        "${workspaceFolder}/lib/pico-sdk/**",
+        "${workspaceFolder}/lib/pico-extras/**",
+        "${workspaceFolder}/lib/SEGGER",
+        "${workspaceFolder}/lib/SEGGER/Config",
+        "${workspaceFolder}/lib/SEGGER/FreeRTOSV11"
+      ]
+    }
+  ],
+  "version": 4
+}

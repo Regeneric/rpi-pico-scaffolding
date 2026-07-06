@@ -1,0 +1,262 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "(ARM) [DEBUG] Configure",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--preset", "arm-debug"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(ARM) [DEBUG] Build",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--build", "--preset", "arm-debug"],
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "(ARM) [DEBUG] Configure + Build",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "(ARM) [DEBUG] Configure",
+        "(ARM) [DEBUG] Build"
+      ],
+      "problemMatcher": []
+    },
+
+    {
+      "label": "(ARM) [RELEASE] Configure",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--preset", "arm-release"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(ARM) [RELEASE] Build",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--build", "--preset", "arm-release"],
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "(ARM) [RELEASE] Configure + Build",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "(ARM) [RELEASE] Configure",
+        "(ARM) [RELEASE] Build"
+      ],
+      "problemMatcher": []
+    },
+
+    {
+      "label": "(RISC-V) [DEBUG] Configure",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--preset", "riscv-debug"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(RISC-V) [DEBUG] Build",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--build", "--preset", "riscv-debug"],
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "(RISC-V) [DEBUG] Configure + Build",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "(RISC-V) [DEBUG] Configure",
+        "(RISC-V) [DEBUG] Build"
+      ],
+      "problemMatcher": []
+    },
+
+    {
+      "label": "(RISC-V) [RELEASE] Configure",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--preset", "riscv-release"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(RISC-V) [RELEASE] Build",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--build", "--preset", "riscv-release"],
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "(RISC-V) [RELEASE] Configure + Build",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "(RISC-V) [RELEASE] Configure",
+        "(RISC-V) [RELEASE] Build"
+      ],
+      "problemMatcher": []
+    },
+
+    {
+      "label": "(ARM) [DEBUG] Clean Build Directory",
+      "type": "shell",
+      "command": "rm",
+      "args": ["-rf", "${workspaceFolder}/build/arm/debug"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(ARM) [RELEASE] Clean Build Directory",
+      "type": "shell",
+      "command": "rm",
+      "args": ["-rf", "${workspaceFolder}/build/arm/release"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(RISC-V) [DEBUG] Clean Build Directory",
+      "type": "shell",
+      "command": "rm",
+      "args": ["-rf", "${workspaceFolder}/build/riscv/debug"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(RISC-V) [RELEASE] Clean Build Directory",
+      "type": "shell",
+      "command": "rm",
+      "args": ["-rf", "${workspaceFolder}/build/riscv/release"],
+      "problemMatcher": []
+    },
+
+    {
+      "label": "(ARM) [DEBUG] Flash RP2350 via OpenOCD",
+      "type": "shell",
+      "command": "openocd",
+      "args": [
+        "-s", "tcl",
+        "-f", "interface/cmsis-dap.cfg",
+        "-f", "target/rp2350.cfg",
+        "-c", "adapter speed 3000",
+        "-c", "program build/arm/debug/src/hkRTOS.elf verify reset exit"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "(RISC-V) [DEBUG] Flash RP2350 via OpenOCD",
+      "type": "shell",
+      "command": "openocd",
+      "args": [
+        "-s", "tcl",
+        "-f", "interface/cmsis-dap.cfg",
+        "-f", "target/rp2350-riscv.cfg",
+        "-c", "adapter speed 3000",
+        "-c", "program build/riscv/debug/src/hkRTOS.elf verify reset exit"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+
+    {
+      "label": "(ARM) [DEBUG] GDB Server via OpenOCD",
+      "type": "shell",
+      "command": "openocd",
+      "args": [
+        "-s", "tcl",
+        "-f", "interface/cmsis-dap.cfg",
+        "-f", "target/rp2350.cfg",
+        "-c", "adapter speed 3000"
+      ],
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "(RISC-V) [DEBUG] GDB Server via OpenOCD",
+      "type": "shell",
+      "command": "openocd",
+      "args": [
+        "-s", "tcl",
+        "-f", "interface/cmsis-dap.cfg",
+        "-f", "target/rp2350-riscv.cfg",
+        "-c", "adapter speed 3000"
+      ],
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated"
+      }
+    },
+
+    {
+      "label": "(ARM) [DEBUG] Static Analysis with Cppcheck",
+      "type": "shell",
+      "command": "cppcheck",
+      "args": [
+        "--enable=all",
+        "--inconclusive",
+        "--std=c11",
+        "--force",
+        "--language=c",
+        "--quiet",
+        "--suppress=missingIncludeSystem",
+        "--platform=unix32",
+        "-DHPLATFORM_ARM",
+        "-D__arm_gcc__",
+        "-DPICO_RP2350",
+        "-DPICO_BOARD=pico2_w",
+        "-DPICO_PLATFORM=rp2350-arm-s",
+        "-I${workspaceFolder}/include",
+        "-I${workspaceFolder}/include/config",
+        "-I${workspaceFolder}/lib/SEGGER",
+        "-I${workspaceFolder}/lib/SEGGER/Config",
+        "-I${workspaceFolder}/lib/SEGGER/FreeRTOSV11",
+        "-I${workspaceFolder}/lib/pico-sdk/src/common",
+        "-I${workspaceFolder}/lib/pico-sdk/src/rp2_common",
+        "src"
+      ],
+      "problemMatcher": {
+        "owner": "cppcheck",
+        "pattern": [
+          {
+            "regexp": "^\\[(.*):(\\d+)\\]: \\((error|warning|style|performance)\\) (.*)$",
+            "file": 1,
+            "line": 2,
+            "severity": 3,
+            "message": 4
+          }
+        ]
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    }
+  ]
+}
