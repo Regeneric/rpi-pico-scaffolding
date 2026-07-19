@@ -139,7 +139,7 @@
         "-f", "interface/cmsis-dap.cfg",
         "-f", "target/rp2350.cfg",
         "-c", "adapter speed 3000",
-        "-c", "program build/arm/debug/src/hkRTOS.elf verify reset exit"
+        "-c", "program ${config:armDebugBuildDir}/src/${config:projectName}.elf verify reset exit"
       ],
       "problemMatcher": [],
       "presentation": {
@@ -158,7 +158,7 @@
         "-f", "interface/cmsis-dap.cfg",
         "-f", "target/rp2350-riscv.cfg",
         "-c", "adapter speed 3000",
-        "-c", "program build/riscv/debug/src/hkRTOS.elf verify reset exit"
+        "-c", "program ${config:riscvDebugBuildDir}/src/${config:projectName}.elf verify reset exit"
       ],
       "problemMatcher": [],
       "presentation": {

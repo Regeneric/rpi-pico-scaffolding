@@ -1,14 +1,20 @@
 #pragma once
-#include <defines.h>
 
 #ifdef HPLATFORM_ARM
-    #define HLOG_LEVEL                          LOG_TRACE                       // TRACE | DEBUG | INFO | WARN | ERROR
+    // Logging
+    #ifndef HLOG_LEVEL
+        #define HLOG_LEVEL                          LOG_TRACE                   // TRACE | DEBUG | INFO | WARN | ERROR
+    #endif
 
+    // RTOS
     #define HTASK_PRIORITY_LOW                  1                               // For RTOS tasks
     #define HTASK_PRIORITY_MEDIUM               2                               // For RTOS tasks
     #define HTASK_PRIORITY_HIGH                 3                               // For RTOS tasks
 
-    #define HENABLE_WIFI                        true                            // Enable or disable WiFi module
+    // WiFi
+    #ifndef HENABLE_WIFI
+        #define HENABLE_WIFI                    0                               // Enable or disable WiFi module
+    #endif
     #if HENABLE_WIFI
         #ifndef WIFI_SSID
             #define HWIFI_SSID                  "pico"                          // WiFi network name
@@ -23,10 +29,12 @@
     #endif
 
     // Debugging
-    #define HSEGGER_SYSVIEW                     true                            // Use SEGGER SysView for debugging
+    #ifndef HSEGGER_SYSVIEW
+        #define HSEGGER_SYSVIEW                 0                               // Use SEGGER SysView for debugging
+    #endif
     #if HSEGGER_SYSVIEW
         #define HPRINT(val)                     SEGGER_SYSVIEW_PrintfHost(val)  // Shorthand macro
     #else
-        #define HPRINT(val)
+        #define HPRINT(val)                     do {} while (0)
     #endif
 #endif // HPLATFORM_ARM

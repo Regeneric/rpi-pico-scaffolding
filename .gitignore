@@ -6,4 +6,8 @@ debug/*.jdebug.user
 
 docs/
 
+cmake-build-debug/
+
+main.cpp.bak
+
 pico_sdk_import.cmake

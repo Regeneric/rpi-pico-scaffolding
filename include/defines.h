@@ -91,17 +91,17 @@ typedef char* (*json)(const void* self);
     #define STATIC_ASSERT _Static_assert
 #endif
 
-STATIC_ASSERT(sizeof(uint8)  == 1, "Expected u8 to be 1 byte");
-STATIC_ASSERT(sizeof(uint16) == 2, "Expected u16 to be 2 bytes");
-STATIC_ASSERT(sizeof(uint32) == 4, "Expected u32 to be 4 bytes");
-STATIC_ASSERT(sizeof(uint64) == 8, "Expected u64 to be 8 bytes");
+STATIC_ASSERT(sizeof(uint8)  == 1, "Expected uint8 to be 1 byte");
+STATIC_ASSERT(sizeof(uint16) == 2, "Expected uint16 to be 2 bytes");
+STATIC_ASSERT(sizeof(uint32) == 4, "Expected uint32 to be 4 bytes");
+STATIC_ASSERT(sizeof(uint64) == 8, "Expected uint64 to be 8 bytes");
 
-STATIC_ASSERT(sizeof(int8)  == 1, "Expected i8 to be 1 byte");
-STATIC_ASSERT(sizeof(int16) == 2, "Expected i16 to be 2 bytes");
-STATIC_ASSERT(sizeof(int32) == 4, "Expected i32 to be 4 bytes");
-STATIC_ASSERT(sizeof(int64) == 8, "Expected i64 to be 8 bytes");
+STATIC_ASSERT(sizeof(int8)  == 1, "Expected int8 to be 1 byte");
+STATIC_ASSERT(sizeof(int16) == 2, "Expected int16 to be 2 bytes");
+STATIC_ASSERT(sizeof(int32) == 4, "Expected int32 to be 4 bytes");
+STATIC_ASSERT(sizeof(int64) == 8, "Expected int64 to be 8 bytes");
 
-STATIC_ASSERT(sizeof(float32) == 4, "Expected f32 to be 4 bytes");
+STATIC_ASSERT(sizeof(float32) == 4, "Expected float32 to be 4 bytes");
 
 #if __SIZEOF_DOUBLE__ != 8
     #ifdef _MSC_VER
@@ -110,7 +110,7 @@ STATIC_ASSERT(sizeof(float32) == 4, "Expected f32 to be 4 bytes");
         #warning WARNING: `double` is less than 8 bytes!
     #endif
 #else
-    STATIC_ASSERT(sizeof(float64) == 8, "Expected f64 to be 8 bytes");
+    STATIC_ASSERT(sizeof(float64) == 8, "Expected float64 to be 8 bytes");
 #endif
 
 

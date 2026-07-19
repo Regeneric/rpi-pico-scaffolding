@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
+include(cmake/options.cmake)
 
 # --- BUILD TYPE --------------------------------------------------------------
 if(NOT CMAKE_BUILD_TYPE)
@@ -93,6 +94,13 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/lib/SEGGER
     ${CMAKE_SOURCE_DIR}/lib/SEGGER/Config
     ${CMAKE_SOURCE_DIR}/lib/SEGGER/FreeRTOSV11
+)
+
+add_compile_definitions(
+    HLOGGER_HEADER=<core/logger/logger.h>
+    HLOG_LEVEL=LOG_${HLOG_LEVEL}
+    HENABLE_WIFI=$<BOOL:${HENABLE_WIFI}>
+    HSEGGER_SYSVIEW=$<BOOL:${HSEGGER_SYSVIEW}>
 )
 
 

@@ -4,39 +4,39 @@
 
 #include <core/logger/logger.h>
 
-static const char* const logLevelStrings[6] = {
+static const char *const log_level_strings[6] = {
     "[FATAL]: ",
     "[ERROR]: ",
-    "[WARN]:  ",
-    "[INFO]:  ",
+    "[WARN ]: ",
+    "[INFO ]: ",
     "[DEBUG]: ",
     "[TRACE]: "
 }; 
 
-void hkkLogOutput(LogLevel_t level, const char* message, ...) {
+void hkk_log_output(LogLevel_t level, const char* message, ...) {
     if(message == NULL) return;
     if((int16)level < 0 || (int16)level >= MAX_LOG_LEVEL) level = LOG_LEVEL_INFO;
 
-    bool8 isError = level < LOG_LEVEL_WARN;
-    const char* currentLogLevel = logLevelStrings[level];
+    bool8 err = level < LOG_LEVEL_WARN;
+    const char* current_log_level = log_level_strings[level];
 
-    char logBuffer[HK_LOG_MSG_MAX_LEN];
-    memset(logBuffer, 0, sizeof(logBuffer));
+    char log_buffer[HLOG_MSG_MAX_LEN];
+    memset(log_buffer, 0, sizeof(log_buffer));
 
-    va_list argPointer;
-    va_start(argPointer, message);
-    int32 written = vsnprintf(logBuffer, HK_LOG_MSG_MAX_LEN, message, argPointer);
-    va_end(argPointer);
+    va_list argp;
+    va_start(argp, message);
+    int32 written = vsnprintf(log_buffer, HLOG_MSG_MAX_LEN, message, argp);
+    va_end(argp);
     
     if(written < 0) return;
-    if(written >= HK_LOG_MSG_MAX_LEN) {}    // Do nothing, for now
+    if(written >= HLOG_MSG_MAX_LEN) {}  // Do nothing, for now
 
-    char logMessage[HK_LOG_MSG_MAX_LEN];
-    snprintf(logMessage, sizeof(logMessage), "%s%s\n", currentLogLevel, logBuffer);
+    char msg[HLOG_MSG_MAX_LEN];
+    snprintf(msg, sizeof(msg), "%s%s\n", current_log_level, log_buffer);
     
-    HPRINT(logMessage);                 // SEGGER print shorthand macro
-    if(isError) printf("%s", logMessage);
-    else printf("%s", logMessage);
+    HPRINT(msg);                        // SEGGER print shorthand macro
+    if(err) printf("%s", msg);
+    else printf("%s", msg);
     
     return;
 }

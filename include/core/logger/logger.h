@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 
-#define HK_LOG_MSG_MAX_LEN 128
+#define HLOG_MSG_MAX_LEN 128
 
 #define LOG_FATAL 0
 #define LOG_ERROR 1
@@ -60,36 +60,36 @@ typedef enum LogLevel_t {
     MAX_LOG_LEVEL
 } LogLevel_t;
 
-void hkkLogOutput(LogLevel_t level, const char* message, ...);
+void hkk_log_output(LogLevel_t level, const char* message, ...);
 
 
 #ifndef HFATAL
-    #define HFATAL(message, ...) hkkLogOutput(LOG_LEVEL_FATAL, message, ##__VA_ARGS__)
+    #define HFATAL(message, ...) hkk_log_output(LOG_LEVEL_FATAL, message, ##__VA_ARGS__)
 #endif
 #ifndef HERROR
-    #define HERROR(message, ...) hkkLogOutput(LOG_LEVEL_ERROR, message, ##__VA_ARGS__)
+    #define HERROR(message, ...) hkk_log_output(LOG_LEVEL_ERROR, message, ##__VA_ARGS__)
 #endif
 
 #if LOG_WARN_ENABLED
-    #define HWARN(message, ...)  hkkLogOutput(LOG_LEVEL_WARN, message, ##__VA_ARGS__)
+    #define HWARN(message, ...)  hkk_log_output(LOG_LEVEL_WARN, message, ##__VA_ARGS__)
 #else
     #define HWARN(message, ...)
 #endif
 
 #if LOG_INFO_ENABLED
-    #define HINFO(message, ...)  hkkLogOutput(LOG_LEVEL_INFO, message, ##__VA_ARGS__)
+    #define HINFO(message, ...)  hkk_log_output(LOG_LEVEL_INFO, message, ##__VA_ARGS__)
 #else
     #define HINFO(message, ...)
 #endif
 
 #if LOG_DEBUG_ENABLED
-    #define HDEBUG(message, ...) hkkLogOutput(LOG_LEVEL_DEBUG, message, ##__VA_ARGS__)
+    #define HDEBUG(message, ...) hkk_log_output(LOG_LEVEL_DEBUG, message, ##__VA_ARGS__)
 #else
     #define HDEBUG(message, ...)
 #endif
 
 #if LOG_TRACE_ENABLED
-    #define HTRACE(message, ...) hkkLogOutput(LOG_LEVEL_TRACE, message, ##__VA_ARGS__)
+    #define HTRACE(message, ...) hkk_log_output(LOG_LEVEL_TRACE, message, ##__VA_ARGS__)
 #else
     #define HTRACE(message, ...)
 #endif

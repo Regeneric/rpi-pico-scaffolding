@@ -1,4 +1,9 @@
 {
+  "projectName": "PICO_RTOS",
+  "buildPreset": "arm-debug",
+  "armDebugBuildDir": "${workspaceFolder}/build/arm/debug",
+  "riscvDebugBuildDir": "${workspaceFolder}/build/riscv/debug",
+  
   "cmake.useCMakePresets": "always",
   "cmake.configureOnOpen": false,
   "files.associations": {
@@ -6,5 +11,6 @@
     "*.c": "c",
     "*.hpp": "cpp",
     "*.cpp": "cpp"
-  }
+  },
+  "C_Cpp.errorSquiggles": "enabled"
 }

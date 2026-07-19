@@ -1,16 +1,11 @@
 add_subdirectory(core)
 # add_subdirectory(other)
 # add_subdirectory(directory)
-# add_subdirectory(to)
-# add_subdirectory(include)
 
 add_executable(${PROJECT_NAME}
     main.cpp
-    # some.cpp
     # other.cpp
     # file.cpp
-    # to.cpp
-    # include.cpp
 )
 
 target_include_directories(${PROJECT_NAME} 
@@ -20,19 +15,27 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        # libsome
+        libcore
         # libother
         # liblibrary
-        # libto
-        # libinclude
 
         segger_sysview
         segger_sysview_freertos
         segger_rtt
 
         # ---- HKK IoT Drivers
-        hkk::bus_i2c_rp2350
-        # hkk::bus_spi_rp2350
+        hkk::drivers::sgp30
+        hkk::drivers::dht20
+        hkk::drivers::bme280
+        hkk::drivers::pms5003
+
+        # ---- RP2350 implementations
+        hkk::rp2350::utils
+        hkk::rp2350::bus::i2c
+        hkk::rp2350::bus::spi
+        hkk::rp2350::bus::uart
+        hkk::rp2350::nvm
+        hkk::rp2350::core::dma
 
         # ---- Pico SDK core ----
         pico_stdlib
